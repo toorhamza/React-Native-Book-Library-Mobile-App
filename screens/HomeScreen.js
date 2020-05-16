@@ -11,11 +11,14 @@ import { showMessage, hideMessage } from "react-native-flash-message";
 export default function HomeScreen() {
   const [books, setBooks] = React.useState("");
   const [search, setSearch] = React.useState("harry potter");
+  
+  // Please get a new API key from Google API console for Google Books otherwise the App won't work
+  let api_key = "";
 
   React.useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyDDQHipW-29g8xCP2rGQllqZQbicky7aCQ`
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${api_key}`
       )
       .then((response) => {
         let items = response.data.items
